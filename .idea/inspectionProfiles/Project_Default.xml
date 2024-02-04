@@ -7,6 +7,7 @@
         <list>
           <option value="W292" />
           <option value="W391" />
+          <option value="E302" />
         </list>
       </option>
     </inspection_tool>
@@ -14,6 +15,8 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="int.*" />
+          <option value="numpy" />
+          <option value="main.TextTransformer.*" />
         </list>
       </option>
     </inspection_tool>

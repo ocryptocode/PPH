@@ -27,5 +27,3 @@ This project leverages databases and AI models to interpret financial informatio
 - Adjust the configuration settings in `config/config.yml` to customize database connection details, AI model parameters, and other settings.
 
 ## Contributing
-
-We welcome contributions! If you would like to contribute to the project, please follow the guidelines outlined in `CONTRIBUTING.md`.

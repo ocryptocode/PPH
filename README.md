@@ -6,24 +6,17 @@ This project leverages databases and AI models to interpret financial informatio
 
 - **Database Integration:** Utilizes a relational database to store and manage financial data efficiently. We recommend [Database System] for optimal performance.
 
-- **AI Models:** Employs state-of-the-art AI models for financial interpretation. The AI models are trained to analyze and extract meaningful patterns from the financial data, providing insights into trends, anomalies, and potential opportunities.
+- **AI Models:** Employs state-of-the-art AI models for financial interpretation. The AI models are trained to analyze and extract meaningful patterns from the financial data, as well as interpret that data properly .
 
 - **User-Friendly Interface:** A user-friendly interface allows users to interact with the system seamlessly. It includes features for querying the database, visualizing financial data, and accessing AI-driven insights.
 
-## Usage
+## Project Documentation
 
-1. **Database Population:**
-   - Use the provided scripts (`scripts/populate_database.py`) to populate the database with sample financial data.
-
-2. **AI Model Inference:**
-   - Trigger the AI model for financial interpretation using the relevant endpoint or script (`scripts/run_ai_model.py`).
-
-3. **Interact with the Interface:**
-   - Access the user interface at `http://localhost:8080` (or as specified in the configuration).
-   - Explore financial data, query the database, and view AI-generated insights.
-
-## Configuration
-
-- Adjust the configuration settings in `config/config.yml` to customize database connection details, AI model parameters, and other settings.
+For in-depth information about installing, configuring, and using the Financial Interpretation Project, please refer to the comprehensive documentation available in the `docs` folder .
 
 ## Contributing
+
+We encourage contributions from the community! If you have ideas for enhancements, bug fixes, or new features.The details are in  `contributing.md`
+
+## License
+

@@ -4,7 +4,7 @@ This project leverages databases and AI models to interpret financial informatio
 
 ## Features
 
-- **Database Integration:** Utilizes a relational database to store and manage financial data efficiently. We recommend [Database System] for optimal performance.
+- **Database Integration:** Utilizes a relational database to store and manage financial data efficiently.
 
 - **AI Models:** Employs state-of-the-art AI models for financial interpretation. The AI models are trained to analyze and extract meaningful patterns from the financial data, as well as interpret that data properly .
 
@@ -12,7 +12,7 @@ This project leverages databases and AI models to interpret financial informatio
 
 ## Project Documentation
 
-For in-depth information about installing, configuring, and using the Financial Interpretation Project, please refer to the comprehensive documentation available in the `docs` folder .
+For in-depth information about project coding , and using the Financial Interpretation Project, please refer to the comprehensive documentation available in the `code documentation.md`
 
 ## Contributing
 
@@ -20,3 +20,4 @@ We encourage contributions from the community! If you have ideas for enhancement
 
 ## License
 
+This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.

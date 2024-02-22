@@ -29,3 +29,7 @@ This project leverages databases and AI models to interpret financial informatio
 ## Contributing
 
 We welcome contributions! If you would like to contribute to the project, please follow the guidelines outlined in `CONTRIBUTING.md`.
+
+
+##License
+This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.

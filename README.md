@@ -11,15 +11,10 @@ This project leverages databases and AI models to interpret financial informatio
 - **User-Friendly Interface:** A user-friendly interface allows users to interact with the system seamlessly. It includes features for querying the database, visualizing financial data, and accessing AI-driven insights.
 
 ## Usage
+1. **AI Model Inference:**
+   - Trigger the AI model for financial interpretation 
 
-1. **Database Population:**
-   - Use the provided scripts (`scripts/populate_database.py`) to populate the database with sample financial data.
-
-2. **AI Model Inference:**
-   - Trigger the AI model for financial interpretation using the relevant endpoint or script (`scripts/run_ai_model.py`).
-
-3. **Interact with the Interface:**
-   - Access the user interface at `http://localhost:8080` (or as specified in the configuration).
+2. **Interact with the Interface:**
    - Explore financial data, query the database, and view AI-generated insights.
 
 ## Configuration
@@ -31,5 +26,5 @@ This project leverages databases and AI models to interpret financial informatio
 We welcome contributions! If you would like to contribute to the project, please follow the guidelines outlined in `CONTRIBUTING.md`.
 
 
-##License
+## License
 This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.

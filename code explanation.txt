@@ -1,0 +1,46 @@
+Project Documentation
+
+This documentation provides an overview of the key components and steps involved in the project.
+
+1. Application Setup
+
+A Flask web application is created to serve as the project's foundation.
+Two routes are defined: /hello for a simple response and / for rendering an HTML template.
+2. Database Handling
+
+Data is read from an Excel file into a Pandas DataFrame.
+New rows are added to the DataFrame, and a function is applied to check payment validation.
+Payments data is identified, merged, and utilized to create payment statements using Microsoft Word.
+3. Text Classification Model
+
+A text classification pipeline is implemented using TF-IDF and Logistic Regression.
+The model is trained and evaluated for accuracy on the dataset.
+4. Custom Transformer and Seq2Seq Model
+
+A custom transformer and a Seq2Seq model with a transformer encoder are implemented using PyTorch.
+5. BERT for Sequence Classification
+
+BERT (Bidirectional Encoder Representations from Transformers) is employed for sequence classification tasks.
+6. GPT-2 for Text Generation
+
+GPT-2 (Generative Pre-trained Transformer 2) is utilized for text generation.
+7. Custom Class and Pipeline
+
+A custom class and pipeline are defined for data transformation and processing.
+8. PyTorch Model Training
+
+A simple neural network is trained using PyTorch, including the definition of the model, loss function, and optimizer.
+9. DataLoader for Efficient Data Loading
+
+The DataLoader is introduced for efficient loading of data in batches.
+10. Fine-tuning BERT Model
+
+BERT is fine-tuned on a specific task using a training loop.
+11. Learning Rate Scheduling
+
+Learning rate scheduling is implemented for adaptive optimization during training.
+12. Running the Application
+
+The Flask application is run with debug mode enabled.
+Note: This documentation provides an overview. For detailed information, refer to the source code.
+

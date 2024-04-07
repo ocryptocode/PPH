@@ -15,7 +15,6 @@ from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
 import random
 import os
-from docx import Document
 
 app = Flask(__name__)
 
@@ -31,54 +30,17 @@ def index():
 
 
 # Step 2: Disposing the database
-# Read XLS file using pandas library into a Pandas DataFrame
-xls_file_path = os.environ.get('File_PPH_xls', r'C:\Users\LENOVO\PycharmProjects\PPH\Base de données.xlsx')
-df = pd.read_excel(xls_file_path)
+# Read accdb file using pandas library into a Pandas DataFrame
+file_path = os.environ.get('File_PPH_accdb',
+                           r'C:\Users\LENOVO\PycharmProjects\PPH\DF.accdb')
+df = pd.read_excel(file_path)
 
 # Display the database file
 print(df)
 
-# Add new rows to the database table and a function to it
-new_rows = [
-	{"nombre": 1, "nom": "Dupont", "prénom": "Jean", "nom du père": "Dupont père", "nbre de tel du père": 123456789,
-	 "nom de la mère": "Dupont mère", "nbre de tel de la mère": 987654321, "date de naissance": '01-01-2005',
-	 "classe": "10A", "Age": 17, "Mode de paiement": "Carte bancaire", "Statut de paiement": "validé"},
-	{"nombre": 3, "nom": "Martin", "prénom": "Marie", "nom du père": "Martin père", "nbre de tel du père": 987654321,
-	 "nom de la mère": "Martin mère", "nbre de tel de la mère": 123456789, "date de naissance": "15-08-2003",
-	 "classe": "11B", "Age": 14, "Mode de paiement": "Chèque", "Statut de paiement": "non validé"},
-	{"nombre": 4, "nom": "Dubois", "prénom": "Ahmed", "nom du père": "Dubois père", "nbre de tel du père": 1122334455,
-	 "nom de la mère": "Dubois mère", "nbre de tel de la mère": 5544332211, "date de naissance": "03-04-2006",
-	 "classe": "9C", "Age": 16, "Mode de paiement": "Virement", "Statut de paiement": "non validé"},
-	{"nombre": 5, "nom": "Leroux", "prénom": "Sophie", "nom du père": "Leroux père", "nbre de tel du père": 9988776655,
-	 "nom de la mère": "Leroux mère", "nbre de tel de la mère": 5543537281, "date de naissance": "02-05-2004",
-	 "classe": "10A", "Age": 18, "Mode de paiement": "Carte bancaire", "Statut de paiement": "validé"},
-	{"nombre": 6, "nom": "Garcia", "prénom": "Carlos", "nom du père": "Garcia père", "nbre de tel du père": 3344556677,
-	 "nom de la mère": "Garcia mère", "nbre de tel de la mère": 8899001122, "date de naissance": "07-06-2002",
-	 "classe": "12B", "Age": 20, "Mode de paiement": "Virement", "Statut de paiement": "validé"},
-	{"nombre": 7, "nom": "Chen", "prénom": "Mei", "nom du père": "Chen père", "nbre de tel du père": 5566778899,
-	 "nom de la mère": "Chen mère", "nbre de tel de la mère": 9988776655, "date de naissance": "12-09-2005",
-	 "classe": "10A", "Age": 16, "Mode de paiement": "Chèque", "Statut de paiement": "non validé"},
-	{"nombre": 8, "nom": "Ahmed", "prénom": "Fatima", "nom du père": "Ahmed père", "nbre de tel du père": 1122334455,
-	 "nom de la mère": "Ahmed mère", "nbre de tel de la mère": 3344556677, "date de naissance": "25-03-2003",
-	 "classe": "11B", "Age": 19, "Mode de paiement": "Carte bancaire", "Statut de paiement": "validé"},
-	{"nombre": 9, "nom": "Smith", "prénom": "Emily", "nom du père": "Smith père", "nbre de tel du père": 8899001122,
-	 "nom de la mère": "Smith mère", "nbre de tel de la mère": 5566778899, "date de naissance": "14-08-2004",
-	 "classe": "10A", "Age": 18, "Mode de paiement": "Virement", "Statut de paiement": "non validé"},
-	{"nombre": 10, "nom": "Wang", "prénom": "Jun", "nom du père": "Wang père", "nbre de tel du père": 9988776655,
-	 "nom de la mère": "Wang mère", "nbre de tel de la mère": 8899001122, "date de naissance": "19-06-2002",
-	 "classe": "12B", "Age": 20, "Mode de paiement": "Chèque", "Statut de paiement": "non validé"},
-	{"nombre": 11, "nom": "Park", "prénom": "Min", "nom du père": "Park père", "nbre de tel du père": 3344556677,
-	 "nom de la mère": "Park mère", "nbre de tel de la mère": 5566778899, "date de naissance": "22-11-2003",
-	 "classe": "11B", "Age": 19, "Mode de paiement": "Carte bancaire", "Statut de paiement": "validé"}
-]
-df = pd.concat([df, pd.DataFrame(new_rows)])
-
-# Display the updated database file
-print(df)
-
 
 # Function to check if a payment is validated or not
-def check_payment_status(row):
+def check_payment_status():
 	if row["Statut de paiement"] == "validé":
 		return "a jour avec le paiement"
 	else:
@@ -92,29 +54,32 @@ df["Validation du paiement"] = df.apply(check_payment_status, axis=1)
 print(df)
 
 # Identifying payments df and merging it with df
-payments_df = pd.read_excel(Paiements.xlsx)
+payments_file = os.environ.get('File_PPH_xls',
+                               r'C:\Users\LENOVO\PycharmProjects\PPH\Paiements.xlsx')
+payments_df = pd.read_excel(payments_file)
 
 merged_data = pd.merge(df, payments_df, on='nombre', how='inner')
 
 # Creating the payment statement with Microsoft Word
 for index, row in paiements_df.iterrows():
-	document.add_heading(f'Reçu de paiement pour {row["nombre"]}', level=1)
-	document.add_paragraph(f' : {row["Montant"]}')
-	document.add_paragraph(f'Date du paiement : {row["Date du paiement"]}')
-	document.add_paragraph(f'Catégorie prédite : {predictions[index]}')
+	document.add_heading('Reçu de paiement pour {row["nombre"]}', level=1)
+	document.add_paragraph(' : {row["Montant"]}')
+	document.add_paragraph('Date du paiement : {row["Date du paiement"]}')
+	document.add_paragraph('Catégorie prédite : {predictions[index]}')
 
 document.add_page_break()
 
 document.save('recus_paiements.docx')
 # Step 3: Implementing a text classification model
 # Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(df['text'], df['label'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(df['text'],
+                                                    df['label'],
+                                                    test_size=0.2,
+                                                    random_state=42)
 
 # Create a text classification pipeline using TF-IDF and Logistic Regression
-text_classification_pipeline = Pipeline([
-	('tfidf', TfidfVectorizer()),
-	('classifier', LogisticRegression())
-])
+text_classification_pipeline = Pipeline([('tfidf', TfidfVectorizer()),
+                                         ('classifier', LogisticRegression())])
 
 # Train the model
 text_classification_pipeline.fit(X_train, y_train)
@@ -124,44 +89,44 @@ predictions = text_classification_pipeline.predict(X_test)
 
 # Calculate accuracy
 accuracy = accuracy_score(y_test, predictions)
-print(f'Text Classification Model Accuracy: {accuracy}')
+print('Text Classification Model Accuracy: {accuracy}')
 
 
 # Step 4 : implementing the text classification model and the custom transformer
 class CustomTransformer(nn.Module):
-	def __init__(self, input_size, hidden_size, num_layers, num_heads, output_size):
+
+	def __init__(self, input_size, hidden_size, num_layers, num_heads,
+	             output_size):
 		super(CustomTransformer, self).__init__()
 
 		# Self-attention encoder layer
 		self.encoder_layer = nn.TransformerEncoderLayer(
-			d_model=input_size,
-			nhead=num_heads,
-			dim_feedforward=hidden_size
-		)
+			d_model=input_size, nhead=num_heads, dim_feedforward=hidden_size)
 
 		# Transformer encoder
 		self.transformer_encoder = nn.TransformerEncoder(
-			encoder_layer=self.encoder_layer,
-			num_layers=num_layers
-		)
+			encoder_layer=self.encoder_layer, num_layers=num_layers)
 
 		# Linear layer for final output
 		self.linear = nn.Linear(input_size, output_size)
 
-	def forward(self, x):
-		# Forward pass through transformer encoder
-		x = self.transformer_encoder(x)
 
-		# Global average pooling
-		x = torch.mean(x, dim=1)
+def forward(self, x):
+	# Forward pass through transformer encoder
+	x = self.transformer_encoder(x)
 
-		# Linear layer for final output
-		x = self.linear(x)
-		return x
+	# Global average pooling
+	x = torch.mean(x, dim=1)
+
+	# Linear layer for final output
+	x = self.linear(x)
+	return x
 
 
 class Seq2SeqWithCustomTransformer(nn.Module):
-	def __init__(self, input_size, hidden_size, num_layers, num_heads, output_size):
+
+	def __init__(self, input_size, hidden_size, num_layers, num_heads,
+	             output_size):
 		super(Seq2SeqWithCustomTransformer, self).__init__()
 
 		# Custom transformer encoder
@@ -170,11 +135,12 @@ class Seq2SeqWithCustomTransformer(nn.Module):
 			hidden_size=hidden_size,
 			num_layers=num_layers,
 			num_heads=num_heads,
-			output_size=output_size
-		)
+			output_size=output_size)
 
 		# LSTM-based decoder (you can replace this with a transformer decoder if needed)
-		self.decoder = nn.LSTM(input_size=output_size, hidden_size=hidden_size, batch_first=True)
+		self.decoder = nn.LSTM(input_size=output_size,
+		                       hidden_size=hidden_size,
+		                       batch_first=True)
 
 	def forward(self, input_seq):
 		# Forward pass through custom transformer encoder
@@ -205,41 +171,45 @@ gpt2_model = GPT2LMHeadModel.from_pretrained('gpt2')
 # Generate text using GPT-2
 input_prompt = "Once upon a time in a"
 input_ids = gpt2_tokenizer.encode(input_prompt, return_tensors='pt')
-output_text = gpt2_model.generate(input_ids, max_length=100, num_return_sequences=1, no_repeat_ngram_size=2,
-								  top_k=50, top_p=0.95, temperature=0.7)
+output_text = gpt2_model.generate(input_ids,
+                                  max_length=100,
+                                  num_return_sequences=1,
+                                  no_repeat_ngram_size=2,
+                                  top_k=50,
+                                  top_p=0.95,
+                                  temperature=0.7)
 
-generated_text = gpt2_tokenizer.decode(output_text[0], skip_special_tokens=True)
-print(f'Generated Text: {generated_text}')
+generated_text = gpt2_tokenizer.decode(output_text[0],
+                                       skip_special_tokens=True)
+print('Generated Text: {generated_text}')
 
 
 # Step 7 : Implementing a custom class and using it in a pipeline
 class MyClass:
+
 	def __init__(self, database):
 		self.database_mapping = database
 
 	def transform(self):
 		"""
-This method transforms input data and updates the class attributes.
+	This method transforms input data and updates the class attributes.
 		"""
 		self.database_mapping['number'] = input("Enter a number: ")
 		self.database_mapping['name'] = input("Enter a name: ")
 		self.database_mapping['surname'] = input("Enter a surname: ")
-		self.database_mapping['father name'] = input("Enter father's name: ")
-		self.database_mapping['father phone'] = input("Enter father's phone number: ")
-		self.database_mapping['mother name'] = input("Enter mother's name: ")
-		self.database_mapping['mother phone'] = input("Enter mother's phone number: ")
 		self.database_mapping['date of birth'] = input("Enter date of birth: ")
 		self.database_mapping['class'] = input("Enter class: ")
 		self.database_mapping['age'] = input("Enter age: ")
 		self.database_mapping['payment method'] = input("Enter payment method: ")
 		self.database_mapping['payment status'] = input("Enter payment status: ")
-		self.database_mapping['payment update'] = input("Is someone's payment updated? (yes/no): ").lower()
-		self.database_mapping['payment date'] = input("Enter payment date: ")
+		self.database_mapping['payment update'] = input(
+			"Is someone's payment updated? (yes/no): ").lower()
 
 		return self.database_mapping
 
 
 class TextTransformer:
+
 	def __init__(self):
 		self.steps = []
 
@@ -260,6 +230,7 @@ class TextTransformer:
 
 
 class Pipeline:
+
 	def __init__(self, steps):
 		self.steps = steps
 
@@ -291,6 +262,7 @@ y_train = torch.randint(0, 2, (100,))
 
 # Define a simple neural network model
 class SimpleNN(nn.Module):
+
 	def __init__(self, input_size, hidden_size, output_size):
 		super(SimpleNN, self).__init__()
 		self.fc1 = nn.Linear(input_size, hidden_size)
@@ -321,7 +293,7 @@ for epoch in range(epochs):
 	loss.backward()
 	optimizer.step()
 
-	print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss.item()}')
+	print('Epoch [{epoch + 1}/{epochs}], Loss: {loss.item()}')
 
 # Step 9 : Using DataLoader for efficient data loading
 # Dummy dataset and DataLoader
@@ -336,7 +308,8 @@ for inputs, labels in dataloader:
 
 # Step 10 : Fine-tuning BERT model
 # Load pre-trained BERT model for fine-tuning
-fine_tuned_bert_model = BertForSequenceClassification.from_pretrained('bert-base-uncased')
+fine_tuned_bert_model = BertForSequenceClassification.from_pretrained(
+	'bert-base-uncased')
 optimizer = AdamW(fine_tuned_bert_model.parameters(), lr=2e-5)
 
 # Fine-tuning loop
@@ -352,7 +325,9 @@ for epoch in range(num_epochs):
 
 # Step 11 : Implementing learning rate scheduling
 # Learning rate scheduler for PyTorch optimizer
-scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0, num_training_steps=100)
+scheduler = get_linear_schedule_with_warmup(optimizer,
+                                            num_warmup_steps=0,
+                                            num_training_steps=100)
 
 # Training loop with learning rate scheduling
 for epoch in range(num_epochs):

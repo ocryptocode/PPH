@@ -33,7 +33,7 @@ def index():
 # Read accdb file using pandas library into a Pandas DataFrame
 file_path = os.environ.get('File_PPH_accdb',
                            r'C:\Users\LENOVO\PycharmProjects\PPH\DF.accdb')
-df = pd.read_excel(file_path)
+df = pd.read_csv(file_path)
 
 # Display the database file
 print(df)

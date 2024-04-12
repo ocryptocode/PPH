@@ -41,8 +41,8 @@ print(df)
 
 # Function to check if a payment is validated or not
 def check_payment_status():
-	if row["Statut de paiement"] == "validé":
-		return "a jour avec le paiement"
+	if row["Payment statement"] == "validated":
+		return "updated with the paiements"
 	else:
 		return None
 

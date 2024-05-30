@@ -1,4 +1,4 @@
-# Step 1: Creating my application
+from docx import document
 from flask import Flask, render_template
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -14,6 +14,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
 import random
+import openai
 import os
 
 app = Flask(__name__)
@@ -61,11 +62,12 @@ payments_df = pd.read_excel(payments_file)
 merged_data = pd.merge(df, payments_df, on='nombre', how='inner')
 
 # Creating the payment statement with Microsoft Word
-for index, row in paiements_df.iterrows():
-	document.add_heading('Reçu de paiement pour {row["nombre"]}', level=1)
-	document.add_paragraph(' : {row["Montant"]}')
-	document.add_paragraph('Date du paiement : {row["Date du paiement"]}')
-	document.add_paragraph('Catégorie prédite : {predictions[index]}')
+for index, row in df.iterrows():
+    document.add_heading(f'Reçu de paiement pour {row["nombre"]}', level=1)
+    document.add_paragraph(f'Montant : {row["Montant"]}')
+    document.add_paragraph(f'Date du paiement : {row["Date du paiement"]}')
+    document.add_paragraph(f'Catégorie prédite : {predictions[index]}')
+    document.add_page_break()
 
 document.add_page_break()
 
@@ -153,7 +155,7 @@ class Seq2SeqWithCustomTransformer(nn.Module):
 		return decoder_output
 
 
-# Step 5: Using BERT for sequence classification
+# Step 5: Using desired models
 # Load pre-trained BERT model and tokenizer
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 bert_model = BertForSequenceClassification.from_pretrained('bert-base-uncased')
@@ -163,7 +165,6 @@ input_text = "This is a sample text for BERT classification."
 tokenized_input = tokenizer(input_text, return_tensors='pt')
 outputs = bert_model(**tokenized_input)
 
-# Step 6 : Using GPT-2 for text generation
 # Load pre-trained GPT-2 model and tokenizer
 gpt2_tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
 gpt2_model = GPT2LMHeadModel.from_pretrained('gpt2')
@@ -183,8 +184,16 @@ generated_text = gpt2_tokenizer.decode(output_text[0],
                                        skip_special_tokens=True)
 print('Generated Text: {generated_text}')
 
+# Set up openAI API key
+class OpenATIntegration:
+	def __init__(self):
+		self.api_key = openai_api_key
 
-# Step 7 : Implementing a custom class and using it in a pipeline
+
+self.api_key = ''
+
+
+# Step 6 : Implementing a custom class and using it in a pipeline
 class MyClass:
 
 	def __init__(self, database):

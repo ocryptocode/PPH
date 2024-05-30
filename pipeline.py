@@ -13,3 +13,4 @@ class DataAnalysisPipeline:
             generated_text = self.openai_integration.generate_text_with_gpt3(text)
             # Process sentiment and generated text as needed
             # Example: store results in a new DataFrame or database
+

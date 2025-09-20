@@ -1,4 +1,4 @@
-PPH leverages databases and AI models to interpret financial information, providing insights and analysis for improved decision-making. The combination of a robust database system and advanced AI models allows users to gain valuable insights into financial data, helping to streamline financial processes and enhance overall financial management.
+PPH leverages databases and AI models to interpret financial information, providing insights and analysis for improved decision-making. The combination of a robust database system and advanced AI models allows users to gain valuable insights into financial data, helping to streamline financial processes and enhance overall financial management
 
 ## Features
 

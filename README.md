@@ -2,7 +2,7 @@ PPH leverages databases and AI models to interpret financial information, provid
 
 ## Features
 
-- **Database Integration:** Utilizes a relational database to store and manage financial data efficiently. We recommend [Database System] for optimal performance.
+- **Database Integration:** Utilizes a relational database to store and manage financial data efficiently.
 
 - **AI Models:** Employs state-of-the-art AI models for financial interpretation. The AI models are trained to analyze and extract meaningful patterns from the financial data, providing insights into trends, anomalies, and potential opportunities.
 

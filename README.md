@@ -20,11 +20,6 @@ The combination of a robust database system and advanced AI models allows users 
 
 - Adjust the configuration settings in `config/config.yml` to customize database connection details, AI model parameters, and other settings.
 
-## Contributing
-
-We welcome contributions! If you would like to contribute to the project, please follow the guidelines outlined in `CONTRIBUTING.md`.
-
-
 ## License
 This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
 

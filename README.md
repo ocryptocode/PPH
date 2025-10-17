@@ -1,4 +1,5 @@
-PPH leverages databases and AI models to interpret financial information, providing insights and analysis for improved decision-making. 
+PPH leverages databases and AI models to interpret financial information
+
 ## Features
 
 - **Database Integration:** Utilizes a relational database to store and manage financial data efficiently
@@ -19,7 +20,6 @@ PPH leverages databases and AI models to interpret financial information, provid
 - Adjust the configuration settings in `config/config.yml` to customize database connection details, AI model parameters, and other settings.
 
 ## License
-This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
-
+This project is licensed under the [MIT License]
 
                      
